@@ -1,13 +1,14 @@
-import java.util.Scanner;
+import java.util.Scanner;   //importing the scanner package
 public class stats {
-	Scanner sc= new Scanner(System.in);
+	Scanner sc= new Scanner(System.in);  //creating scanner object for input from the user
 	
-	
-	int [] cal(char c[]) {
-		int l=c.length;
-		int p,a,m,n,k;
+	//Function created for calcukaltions 
+	int [] cal(char c[])//will return an integer array and takes char array in arguments
+{   
+		int l=c.length;  //length of the array
+		int p,a,m,n,k;     //declaration of variables for claculating number of present, mass bunks, absents 
 		p=0;a=0;m=0;n=0;
-		for(int i=0;i<l;i++) {
+		for(int i=0;i<l;i++) {     //to search for present, absent and mass bunks or no class
 			if(c[i]=='P')
 				p++;
 			else if(c[i]=='A')
@@ -19,7 +20,7 @@ public class stats {
 			else k=0;
 		}
 		int t,h;
-		int x[]=new int[5];
+		int x[]=new int[5]; //array to be returned
 		t=l-n;
 		h=t-m;
 		double d=(p*100)/h;
@@ -31,7 +32,9 @@ public class stats {
 		x[4]=q;
 		return x;
 	}
-	char [] input()
+         //Function created for accepting and storing the input from the user
+
+	char [] input()//will return a character array
 	{
 		System.out.println("---------------------------------");
 		System.out.printf("%7s %2s %10s %10s","WELCOME", "TO", "ATTENDANCE", "CALCULATOR");
@@ -47,15 +50,17 @@ public class stats {
 		System.out.println("Enter the number of days:");
 		int n=sc.nextInt();
 		char a[]= new char[n];
+// storing the data entered by user in an array
 		for(int i=0;i<n;i++) {
 			System.out.print("Enter for date "+(i+1)+" Jan");
 			a[i]=sc.next().charAt(0); 
 		}
-		return a;
+		return a; 
 		
 	}
-	
-	void print(int [] c, char []a) {
+	//function to print the various stats after calculation.
+	void print(int [] c, char []a) // will take an integer array and a cahracter array in arguments and will not return anything as void is used
+ {
 		System.out.println("---------------------------------");
 		System.out.println("Date          Status");
 		System.out.println("---------------------------------");
@@ -73,13 +78,16 @@ public class stats {
 		System.out.println("Attendace %age till now="+c[4]+" %");
 		
 	}
-	
+	//declaration of main funtion 
+
 	public static void main(String args[]) {
 		
-		stats ob=new stats();
+		stats ob=new stats(); //creating object of the class
+                //using the object of the class to call the funtions
+
 		char []a=ob.input();
 		int b[]=ob.cal(a);
 		ob.print(b,a);
 	}
 
-}
+}//end of the program.
